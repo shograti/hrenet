@@ -7,7 +7,6 @@
   border-radius: 5px;
   font-family: "Noto Sans", sans-serif;
   text-align: center;
-
 }
 
 .rci_container {
@@ -15,6 +14,7 @@
   padding: 1em;
   z-index: 9999;
   background-color: white;
+  bottom: 1em;
 }
 
 .rci_month_selector {
@@ -51,7 +51,6 @@
 .chevron_icon_right {
   transform: rotate(180deg);
 }
-
 
 .rci_cell,
 .rci_selected_cell,

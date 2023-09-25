@@ -1,0 +1,56 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.541);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: white;
+  filter: brightness(95%);
+  margin: 0em 1em;
+  border-radius: 5px;
+  padding: 1em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: flex-start;
+  min-width: 300px;
+}
+
+.title_container {
+  background-color: var(--primary-yellow);
+  position: absolute;
+  color: black;
+  padding: 0.5em 1em;
+  top: -15px;
+  left: -15px;
+  border-radius: 5px;
+}
+
+.message {
+  color: black;
+  font-weight: 600;
+  margin-top: 2em;
+}
+
+.close_icon_container {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.726);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal a {
+  background-color: black;
+  padding: 0.5em 1em;
+  align-self: flex-end;
+}

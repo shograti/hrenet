@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import DatePicker from "../../../../lib";
 import useEmployees from "../../../../hooks/useEmployees";
 
-function Form() {
+function Form({ modal }) {
   const { employees, setEmployees } = useEmployees();
-
   const [department, setDepartment] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,6 +16,43 @@ function Form() {
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      setEmployees([
+        ...employees,
+        {
+          department,
+          firstName,
+          lastName,
+          dob,
+          startDate,
+          street,
+          city,
+          state,
+          zipCode,
+        },
+      ]);
+      modal.current.show({
+        title: "Success",
+        message: "The employee has been created",
+        link: {
+          message: "View Current Employees →",
+          path: "/employees-list",
+        },
+      });
+    } catch (error) {
+      modal.current.show({
+        title: "Error",
+        message: "An unhandled error occurred",
+        link: {
+          message: "Go Back",
+          path: "/",
+        },
+      });
+    }
+  };
+
   const formatDate = (date) => {
     const d = new Date(date);
     const day = ("0" + d.getDate()).slice(-2);
@@ -25,27 +61,12 @@ function Form() {
     return `${day}/${month}/${year}`;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newEmployee = {
-      department,
-      firstName,
-      lastName,
-      dob,
-      startDate,
-      street,
-      city,
-      state,
-      zipCode,
-    };
-    setEmployees([...employees, newEmployee]);
-  };
-
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.input_container}>
         <label htmlFor="department">Department</label>
         <select
+          required
           id="department"
           value={department}
           onChange={(e) => setDepartment(e.target.value)}
@@ -65,6 +86,7 @@ function Form() {
           <div className={styles.input_container}>
             <label htmlFor="firstName">First Name</label>
             <input
+              required
               type="text"
               id="firstName"
               value={firstName}
@@ -74,6 +96,7 @@ function Form() {
           <div className={styles.input_container}>
             <label htmlFor="lastName">Last Name</label>
             <input
+              required
               type="text"
               id="lastName"
               value={lastName}
@@ -82,19 +105,24 @@ function Form() {
           </div>
           <div className={styles.input_container}>
             <label htmlFor="dob">Date of Birth</label>
-            <DatePicker onChange={(e) => setDob(formatDate(e.target.value))} />
+            <DatePicker
+              isRequired={true}
+              onChange={(e) => setDob(formatDate(e.target.value))}
+            />
           </div>
           <div className={styles.input_container}>
             <label htmlFor="startDate">Start Date</label>
             <DatePicker
+              isRequired={true}
               onChange={(e) => setStartDate(formatDate(e.target.value))}
             />
           </div>
         </div>
         <div className={styles.column}>
           <div className={styles.input_container}>
-            <label htmlFor="street">street</label>
+            <label htmlFor="street">Street</label>
             <input
+              required
               type="text"
               id="street"
               value={street}
@@ -104,6 +132,7 @@ function Form() {
           <div className={styles.input_container}>
             <label htmlFor="city">City</label>
             <input
+              required
               type="text"
               id="city"
               value={city}
@@ -113,6 +142,7 @@ function Form() {
           <div className={styles.input_container}>
             <label htmlFor="state">State</label>
             <input
+              required
               type="text"
               id="state"
               value={state}
@@ -122,6 +152,7 @@ function Form() {
           <div className={styles.input_container}>
             <label htmlFor="zipCode">Zip Code</label>
             <input
+              required
               type="text"
               id="zipCode"
               value={zipCode}
@@ -131,7 +162,7 @@ function Form() {
         </div>
       </div>
       <div className={styles.button_container}>
-        <button type="submit">Save</button>
+        <button type="submit">Submit</button>
         <Link to="/employees-list">
           View Current Employees <span> &#8594;</span>
         </Link>

@@ -2,7 +2,7 @@ import "./styles.css";
 import React, { useState } from "react";
 import Calendar from "./Calendar";
 
-function DatePicker({ onChange }) {
+function DatePicker({ onChange, isRequired }) {
   const today = new Date();
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -39,6 +39,7 @@ function DatePicker({ onChange }) {
         />
       ) : (
         <input
+          required={isRequired}
           placeholder="dd/mm/yyyy"
           type="text"
           readOnly
