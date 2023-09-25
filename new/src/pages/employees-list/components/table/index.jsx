@@ -1,21 +1,8 @@
 import styles from "./styles.module.css";
 import arrow from "../../../../assets/arrow.svg";
 
-function Table() {
-  const data = [
-    {
-      firstName: "Jean",
-      lastName: "Dupont",
-      startDate: "01/02/2023",
-      department: "Sales",
-      dob: "01/02/2023",
-      street: "5 rue des postes",
-      city: "Lille",
-      state: "Nord",
-      zipCode: "59000",
-    },
-  ];
-
+function Table({ employees }) {
+  console.log(employees);
   return (
     <table className={styles.table}>
       <thead>
@@ -32,12 +19,14 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {data.length === 0 ? (
+        {employees.length === 0 ? (
           <tr>
-            <td colSpan="9">No data available in table</td>
+            <td className={styles.no_employees} colSpan="9">
+              No data available in table
+            </td>
           </tr>
         ) : (
-          data.map((row, index) => (
+          employees.map((row, index) => (
             <tr key={index}>
               <td>{row.firstName}</td>
               <td>{row.lastName}</td>
