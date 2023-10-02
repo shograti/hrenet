@@ -3,6 +3,15 @@ import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import DatePicker from "../../../../lib";
 import useEmployees from "../../../../hooks/useEmployees";
+import Select from "../../../../components/select";
+
+const OPTIONS = [
+  "Sales",
+  "Marketing",
+  "Engineering",
+  "Human Resources",
+  "Legal",
+];
 
 function Form({ modal }) {
   const { employees, setEmployees } = useEmployees();
@@ -65,21 +74,12 @@ function Form({ modal }) {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.input_container}>
         <label htmlFor="department">Department</label>
-        <select
-          required
-          id="department"
-          value={department}
-          onChange={(e) => setDepartment(e.target.value)}
-        >
-          <option value="" disabled>
-            Select a department
-          </option>
-          <option value="sales">Sales</option>
-          <option value="marketing">Marketing</option>
-          <option value="engineering">Engineering</option>
-          <option value="humanResources">Human Resources</option>
-          <option value="legal">Legal</option>
-        </select>
+        <Select
+          options={OPTIONS}
+          title="Select a department"
+          department={department}
+          setDepartment={setDepartment}
+        />
       </div>
       <div className={styles.columns_container}>
         <div className={styles.column}>
