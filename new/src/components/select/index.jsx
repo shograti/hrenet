@@ -5,7 +5,7 @@ function Select({ title, options, department, setDepartment }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.select} onClick={() => setIsOpen(!isOpen)}>
         {!department ? title : department}
         <span className={styles.chevron}>&#10132;</span>
@@ -26,7 +26,7 @@ function Select({ title, options, department, setDepartment }) {
           ))}
         </div>
       ) : null}
-    </>
+    </div>
   );
 }
 

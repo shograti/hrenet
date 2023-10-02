@@ -1,3 +1,7 @@
+.container {
+  position: relative;
+}
+
 .select {
   width: 100%;
   padding: 0.25em 0.5em;
@@ -20,10 +24,13 @@
 .select_menu {
   background-color: white;
   color: black;
-
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  top: 29px;
 }
 
 .select_menu_item {

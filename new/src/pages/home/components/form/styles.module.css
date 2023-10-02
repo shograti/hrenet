@@ -59,3 +59,14 @@
   font-size: 0.9rem;
   margin-top: 0.5em;
 }
+
+@media screen and (max-width: 500px) {
+  .form {
+    width: 95%;
+  }
+
+  .columns_container {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
