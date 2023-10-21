@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Cell from "./Cell";
 import Day from "./Day";
 import chevron from "./assets/icons/chevron.svg";
-import close from "./assets/icons/close.svg";
+import PropTypes from "prop-types";
 
 function Calendar({
   setIsCalendarVisible,
@@ -119,3 +119,10 @@ function Calendar({
 }
 
 export default Calendar;
+
+Calendar.propTypes = {
+  setIsCalendarVisible: PropTypes.func,
+  selectedDate: PropTypes.instanceOf(Date),
+  handleDateSelect: PropTypes.func,
+  today: PropTypes.instanceOf(Date),
+};

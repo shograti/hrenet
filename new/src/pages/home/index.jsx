@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { useRef } from "react";
 import Modal from "../../components/modal";
 
+
 function Home() {
   const modal = useRef(null);
   return (

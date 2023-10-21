@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
+import PropTypes from "prop-types";
 
 function Select({ title, options, department, setDepartment }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,5 +30,12 @@ function Select({ title, options, department, setDepartment }) {
     </div>
   );
 }
+
+Select.propTypes = {
+  title: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string),
+  department: PropTypes.string,
+  setDepartment: PropTypes.func,
+};
 
 export default Select;

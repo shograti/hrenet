@@ -1,8 +1,7 @@
 import styles from "./styles.module.css";
-import arrow from "../../../../assets/arrow.svg";
+import PropTypes from "prop-types";
 
 function Table({ employees }) {
-  console.log(employees);
   return (
     <table className={styles.table}>
       <thead>
@@ -44,5 +43,21 @@ function Table({ employees }) {
     </table>
   );
 }
+
+Table.propTypes = {
+  employees: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      startDate: PropTypes.string,
+      department: PropTypes.string,
+      dob: PropTypes.string,
+      street: PropTypes.string,
+      city: PropTypes.string,
+      state: PropTypes.string,
+      zipCode: PropTypes.string,
+    }),
+  ),
+};
 
 export default Table;

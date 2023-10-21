@@ -1,4 +1,4 @@
-import  { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
@@ -43,3 +43,5 @@ const Modal = forwardRef((props, ref) => {
 });
 
 export default Modal;
+
+Modal.displayName = "Modal";

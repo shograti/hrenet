@@ -1,15 +1,16 @@
 import "./styles.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Calendar from "./Calendar";
+import PropTypes from "prop-types";
 
-function DatePicker({ onChange, isRequired }) {
+function DatePicker({ onChange }) {
   const today = new Date();
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
   const formatDate = (date) => {
     if (!date) {
-      return "";
+      return null;
     } else {
       const day = date.getDate().toString().padStart(2, "0");
       const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -39,7 +40,6 @@ function DatePicker({ onChange, isRequired }) {
         />
       ) : (
         <input
-          required={isRequired}
           placeholder="dd/mm/yyyy"
           type="text"
           readOnly
@@ -50,5 +50,9 @@ function DatePicker({ onChange, isRequired }) {
     </div>
   );
 }
+
+DatePicker.propTypes = {
+  onChange: PropTypes.func,
+};
 
 export default DatePicker;

@@ -1,8 +1,15 @@
 {
-  "name": "new",
-  "private": true,
-  "version": "0.0.0",
+  "name": "leo-rci-datepicker",
+  "version": "0.0.1",
   "type": "module",
+  "main": "./dist/date-picker.umd.js",
+  "module": "./dist/date-picker.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/date-picker.es.js",
+      "require": "./dist/date-picker.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,9 +17,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "rci-datepicker": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "test-react-calendar-input": "^1.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

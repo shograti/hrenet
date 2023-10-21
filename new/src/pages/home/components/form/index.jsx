@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import DatePicker from "../../../../lib";
+/* import DatePicker from "../../../../lib"; */
 import useEmployees from "../../../../hooks/useEmployees";
 import Select from "../../../../components/select";
+import DatePicker from "rci-datepicker"; 
+import PropTypes from "prop-types";
 
 const OPTIONS = [
   "Sales",
@@ -63,10 +65,10 @@ function Form({ modal }) {
   };
 
   const formatDate = (date) => {
-    const d = new Date(date);
-    const day = ("0" + d.getDate()).slice(-2);
-    const month = ("0" + (d.getMonth() + 1)).slice(-2);
-    const year = d.getFullYear();
+    const newDate = new Date(date);
+    const day = ("0" + newDate.getDate()).slice(-2);
+    const month = ("0" + (newDate.getMonth() + 1)).slice(-2);
+    const year = newDate.getFullYear();
     return `${day}/${month}/${year}`;
   };
 
@@ -106,14 +108,14 @@ function Form({ modal }) {
           <div className={styles.input_container}>
             <label htmlFor="dob">Date of Birth</label>
             <DatePicker
-              isRequired={true}
+              required
               onChange={(e) => setDob(formatDate(e.target.value))}
             />
           </div>
           <div className={styles.input_container}>
             <label htmlFor="startDate">Start Date</label>
             <DatePicker
-              isRequired={true}
+              required
               onChange={(e) => setStartDate(formatDate(e.target.value))}
             />
           </div>
@@ -170,5 +172,9 @@ function Form({ modal }) {
     </form>
   );
 }
+
+Form.propTypes = {
+  modal: PropTypes.object,
+};
 
 export default Form;

@@ -1,9 +1,8 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
-// Create the context
 const EmployeeContext = createContext();
 
-// Create the provider component
 const EmployeeProvider = ({ children }) => {
   const [employees, setEmployees] = useState([]);
 
@@ -15,3 +14,7 @@ const EmployeeProvider = ({ children }) => {
 };
 
 export { EmployeeContext, EmployeeProvider };
+
+EmployeeProvider.propTypes = {
+  children: PropTypes.node,
+};
